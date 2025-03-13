@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interests!!</title>
+    <style>
+    /*
+        figure{
+            border: 2px solid;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-image: url() 30 round;
+            display: inline-block;
+            margin: 1px;
+        }
+
+        input[type="checkbox"]{
+            width: 20px;
+            height: 20px;
+        } 
+
+        figure>a{
+            width: inherit;
+            height: inherit;
+        }
+
+        figure>input{
+            z-index: 1;
+            position: absolute;
+        }
+
+        img{
+            object-fit: fill;
+            width: inherit;
+            height: inherit;
+        }
+    */
+    </style>
+</head>
+
+<header><h1 style="text-align: center; font-size: 5em;">All my interests that I found important enough to list!!!</h1></header>
+
+<body>
+    <div style="border: 3px dotted;" id="main">
+            
+
+    <h1 id="games">We have 0/int games in common</h1>
+
+    <script>
+        window.onload = uncheckAll;
+        var count = 0;
+        var cblist = document.getElementsByTagName("input");
+        document.getElementById('games').innerHTML = 'We have ' + count + '/' + cblist.length + ' games in common';
+        var main = document.getElementById('main');
+        const atrlist = [
+            ['https://www.omori-game.com/en','https://rainworldgame.com/','https://terraria.org/','https://www.factorio.com/','https://store.steampowered.com/franchise/bioshock','https://boomerang-x.com/','https://store.steampowered.com/agecheck/app/501590/','https://store.steampowered.com/app/293780/Crawl/','https://store.steampowered.com/app/322170/Geometry_Dash/','https://store.steampowered.com/app/629090/Horace/','https://play.google.com/store/apps/details?id=com.welikegames.BecameDog&pli=1','https://www.inscryption.com/','https://en.wikipedia.org/wiki/LittleBigPlanet','https://store.steampowered.com/app/1232570/Paper_Beast/','https://www.thinkwithportals.com/','https://store.steampowered.com/app/3590/Plants_vs_Zombies_GOTY_Edition/','https://scrapmechanic.com/','https://www.spore.com/','https://playstarbound.com/','https://www.stardewvalley.net/','https://streetsofrogue.com/','https://store.steampowered.com/app/1293180/SuchArt_Genius_Artist_Simulator/','https://store.steampowered.com/app/1241700/There_Is_No_Game_Jam_Edition_2015/?curator_clanid=45170152','https://freebirdgames.com/games/to-the-moon/','https://store.steampowered.com/app/246900/Viscera_Cleanup_Detail/','https://store.steampowered.com/app/501300/What_Remains_of_Edith_Finch/'], // hyperlinks
+
+            ['OMORI.jpg','Rain_World.jpeg','Terraria.jpg','Factorio.jpg','Bioshock.jpg','Boomerang_X.jpg','Bulletstorm.jpg','Crawl.jpg','Geometry_Dash.jpg','Horace.jpg','I_Became_A_Dog.png','Inscryption.jpg','Little_Big_Planet.jpg','Paper_Beast.jpg','Portal.jpg','PvZ.jpg','Scrap_Mechanic.jpg','Spore.jpg','Starbound.jpeg','Stardew_Valley.jpg','Streets_Of_Rogue.jpg','Such_Art.jpg','There_Is_No_Game.jpg','To_The_Moon.jpg','Viscera_Cleanup_Detail.jpg','What_Remains_Of_Edith_Finch.jpg'], // image source
+
+            ['Omori','Rain World','Terraria','Factorio','Bioshock','Boomerang X','Bulletstorm','Crawl','Geometry Dash','Horace','I Became A Dog','Inscryption','Little Big Planet','Paper Beast','Portal','Plants Versus Zombies','Scrap Mechanic','Spore','Starbound','Stardew Valley','Streets Of Rogue','SuchArt: Genius Artist Simulator','There Is No Game','To The Moon','Viscera Cleanup Detail','What Remains Of Edith Finch'], // alt text
+
+            ['Makes for good gifs','Slugcat :3','Put hundreds of hours into it, yet still making shoeboxes','Spaghetti','Fishies','ULTRAKILL before ULTRAKILL','A bit too much swearing','I love trolling people','Only ever beat one demon','Robots >>> people','Best mobile game ever, no competition','I will never forgive myself for spoiling this for [[[7]]]','Countless nights spent creating </3','Interesting looking, but kind of jank','Orange / Blue','My mum\'s favourite game','One of my favourite sandbox games, my pc never enjoyed my buildings','Making levels for no one to play 🔥','Terraria in space with lore','EMILY IS MINE!!!!','GTA if it was good','Crabux supremacy','Best not game','Show me a better visual novel( you can\'t)','Makes for awesome roleplays surprisingly','Really nice atmosphere'],  // title text
+
+            ['250px','667px'] // sizes 500-250-150
+        ]
+
+        function createFigs(){
+            for (var i = 0; i < atrlist[0].length; i++) {
+                const fig = document.createElement('figure');
+                fig.style.borderStyle = 'solid';
+                fig.style.borderWidth = '2px';
+                fig.style.borderImage = 'url() 30 round'; // THIS IS FOR CUSTOM BORDER !!!
+                fig.style.display = 'inline-block';
+                fig.style.margin = '1px';
+                fig.style.height = 'auto';
+                
+
+                // MAKE WIDTHS AND HEIGHTS HERE !
+
+                const inp = document.createElement('input');
+                inp.setAttribute('type','checkbox');
+                inp.setAttribute('onclick','counter()');
+                inp.style.width = '20px';
+                inp.style.height = '20px';
+                inp.style.zIndex = '1';
+                inp.style.position = 'absolute';
+
+                const hyp = document.createElement('a');
+                hyp.setAttribute('href',atrlist[0][i]);
+                hyp.setAttribute('target','_blank');
+                hyp.style.width = 'inherit';
+                hyp.style.height = 'inherit';
+
+                const img = document.createElement('img');
+                img.setAttribute('src','interest_img/'+atrlist[1][i]);
+                img.setAttribute('alt',atrlist[2][i]);
+                img.setAttribute('title',atrlist[3][i]);
+                img.style.width = 'inherit';
+                img.style.height = 'inherit';
+                img.style.objectFit = 'fill';
+                img.style.maxWidth = '100%';
+                img.style.display = 'flex';
+
+
+                main.insertBefore(fig,main.children[i]);
+                fig.appendChild(inp);
+                fig.appendChild(hyp);
+                hyp.appendChild(img)
+                }
+            }
+        
+
+        function counter() {
+            count = 0; 
+            for (let i = 0; i < cblist.length; i++) {
+                if (cblist[i].type === 'checkbox' && cblist[i].checked) {
+                    count++
+                }
+            }
+            document.getElementById('games').innerHTML = 'We have ' + count + '/' + cblist.length + ' games in common'
+        }
+
+        function uncheckAll() {
+        for (let i = 0; i < cblist.length; i++) {
+            if (cblist[i].type === 'checkbox') {
+                cblist[i].checked = false
+            }
+        }
+    }
+    
+    createFigs();
+    counter();
+    window.addEventListener('resize',
+    function centering(){
+            if (window.innerWidth<window.innerHeight){
+                main.style.display = 'grid';
+                main.style.placeItems = 'center'}
+            else{
+                main.style.display = 'inline-block';
+                main.style.placeItems = 'start'
+                }
+            }
+        )
+    
+    </script>
+</body>
+
+<!--
+    Base's favourite number 7 (use it at the end of IDs?)
+-->
+
+<!--
+    CTRL + SHIFT + M - on browser( test different device sizes!)
+-->
+
+<!--
+    make different sizes based on how good game + vertical/sideways/square versions
+-->
+
+<!--
+    element.className == "GRID SIZE THINGS";
+-->
+
+<!--
+    LESS ! MORE IMPORTANT (CTRL+F)
+-->
+
+<!--
+    https://stackoverflow.com/questions/1248081/how-to-get-the-browser-viewport-dimensions
+    https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+    https://www.w3schools.com/howto/howto_js_media_queries.asp
+    https://www.w3schools.com/css/css3_mediaqueries.asp
+
+-->
+</html>
